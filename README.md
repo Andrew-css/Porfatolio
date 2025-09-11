@@ -1,4 +1,4 @@
-![Vista previa del portafolio](./assets/previsualizacion.png)
+![Vista previa del portafolio](./src/assets/previsualizacion.png)
 
 # Portafolio Personal - Vue 3 + Vite
 
