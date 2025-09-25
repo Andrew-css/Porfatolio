@@ -7,6 +7,9 @@ import img1 from '../assets/esferaaudiovisual.png';
 import img2 from '../assets/juanmar.png';
 import img3 from '../assets/vivirelax.png';
 import img4 from '../assets/hotelesbarichara.png';
+import img5 from '../assets/conecta4.png';
+import img6 from '../assets/pokedex.png';
+
 
 // Datos de proyectos
 const proyectos = ref([
@@ -38,6 +41,26 @@ const proyectos = ref([
     tecnologias: ['Node.js', 'MongoDB'],
     imagen: img4
   }
+])
+
+// Proyectos personales
+const proyectosPersonales = ref([
+  {
+    id: 1,
+    titulo: 'Conecta 4',
+    descripcion: 'Desarrollé una versión digital del clásico Conecta 4, donde dos jugadores pueden divertirse compitiendo para conectar cuatro fichas de su color en línea o diagonal.',
+    tecnologias: ['Vue.js', 'Bootstrap'],
+    imagen: img5,
+    url: 'https://conecta-cuatro.vercel.app'
+  },
+  {
+    id: 2,
+    titulo: 'Pokedex',
+    descripcion: 'Desarrollé una Pokedex que consume la PokeAPI mediante Axios, mostrando cada Pokémon en una carta con su nombre, tipo e imagen, e implementando filtros por tipo y nombre para una búsqueda más intuitiva.',
+    tecnologias: ['Vue.js'],
+    imagen: img6,
+    url: 'https://pokedex-api-vue.vercel.app/'
+  },
 ])
 
 // Directiva personalizada para animaciones
@@ -134,12 +157,13 @@ function abrirModalImagen(src, titulo) {
       </div>
     </section>
 
-    <!-- Proyectos -->
+    <!-- Proyectos Productivos -->
     <section class="proyectos proyectos-bg" id="proyectos" v-reveal>
       <div class="contenedor">
         <h2 class="seccion-titulo" style="color: white;">Proyectos Realizados</h2>
-        <p style="text-align: center; color: white;">Los siguientes proyectos los realicé durante mi etapa productiva en
-          el SENA:</p>
+        <p style="text-align: center; color: white;">
+          Los siguientes proyectos los realicé durante mi etapa productiva en el SENA:
+        </p>
         <div class="proyectos-grid">
           <article class="proyecto-tarjeta" v-for="proyecto in proyectos" :key="proyecto.id">
             <!-- Imagen del proyecto -->
@@ -155,6 +179,34 @@ function abrirModalImagen(src, titulo) {
                 </span>
               </div>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proyectos Personales -->
+    <section class="proyectos proyectos-bg" id="proyectos-personales" v-reveal>
+      <div class="contenedor">
+        <h2 class="seccion-titulo" style="color: white;">Proyectos Personales</h2>
+        <p style="text-align: center; color: white;">
+          Estos proyectos los he desarrollado por iniciativa propia para practicar y mejorar mis habilidades como
+          programador:
+        </p>
+        <div class="proyectos-grid">
+          <article class="proyecto-tarjeta" v-for="proyecto in proyectosPersonales" :key="proyecto.id">
+            <a :href="proyecto.url" target="_blank" rel="noopener" style="text-decoration: none;">
+              <img :src="proyecto.imagen" :alt="proyecto.titulo" class="img-fluid rounded mb-3 proyecto-img"
+                style="cursor:pointer; max-height:180px; object-fit:cover;" />
+              <div class="proyecto-contenido">
+                <h3 class="proyecto-titulo">{{ proyecto.titulo }}</h3>
+                <p class="proyecto-descripcion">{{ proyecto.descripcion }}</p>
+                <div class="proyecto-tecnologias">
+                  <span class="etiqueta-tecnologia" v-for="tecnologia in proyecto.tecnologias" :key="tecnologia">
+                    {{ tecnologia }}
+                  </span>
+                </div>
+              </div>
+            </a>
           </article>
         </div>
       </div>
@@ -184,49 +236,159 @@ function abrirModalImagen(src, titulo) {
         <div class="habilidades-carousel-wrapper">
           <div class="habilidades-carousel">
             <span class="badge-habilidad js">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F7DF1E"/><path d="M19.5 23.9c.6 1.1 1.4 2 2.9 2 1.2 0 2-.6 2-1.4 0-1-0.8-1.3-2.2-1.9l-.8-.3c-2.3-.9-3.8-2-3.8-4.3 0-2.1 1.6-3.7 4.1-3.7 1.8 0 3.1.6 4 2.2l-2.2 1.4c-.5-.9-1-1.2-1.8-1.2-.8 0-1.3.5-1.3 1.2 0 .8.5 1.1 1.7 1.6l.8.3c2.7 1.1 4.2 2.1 4.2 4.5 0 2.6-2 4-4.7 4-2.6 0-4.2-1.2-5-2.7l2.3-1.3zm-8.2.2c.4.7.8 1.3 1.7 1.3.9 0 1.5-.3 1.5-1.7v-7.7h2.8v7.8c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.2-2.6l2.3-1.3z" fill="#222"/></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" fill="#F7DF1E" />
+                <path
+                  d="M19.5 23.9c.6 1.1 1.4 2 2.9 2 1.2 0 2-.6 2-1.4 0-1-0.8-1.3-2.2-1.9l-.8-.3c-2.3-.9-3.8-2-3.8-4.3 0-2.1 1.6-3.7 4.1-3.7 1.8 0 3.1.6 4 2.2l-2.2 1.4c-.5-.9-1-1.2-1.8-1.2-.8 0-1.3.5-1.3 1.2 0 .8.5 1.1 1.7 1.6l.8.3c2.7 1.1 4.2 2.1 4.2 4.5 0 2.6-2 4-4.7 4-2.6 0-4.2-1.2-5-2.7l2.3-1.3zm-8.2.2c.4.7.8 1.3 1.7 1.3.9 0 1.5-.3 1.5-1.7v-7.7h2.8v7.8c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.2-2.6l2.3-1.3z"
+                  fill="#222" />
+              </svg>
               JavaScript
             </span>
             <span class="badge-habilidad vue">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M2 6h6.7L16 18.7 23.3 6H30L16 28 2 6z" fill="#41B883"/><path d="M2 6l14 22 14-22h-6.7L16 18.7 8.7 6H2z" fill="#41B883"/><path d="M8.7 6L16 18.7 23.3 6h-4.1L16 10.1 12.8 6H8.7z" fill="#35495E"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path d="M2 6h6.7L16 18.7 23.3 6H30L16 28 2 6z" fill="#41B883" />
+                  <path d="M2 6l14 22 14-22h-6.7L16 18.7 8.7 6H2z" fill="#41B883" />
+                  <path d="M8.7 6L16 18.7 23.3 6h-4.1L16 10.1 12.8 6H8.7z" fill="#35495E" />
+                </g>
+              </svg>
               Vue.js
             </span>
             <span class="badge-habilidad node">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16 2.7l12.5 7.2v12.2L16 29.3 3.5 22.1V9.9L16 2.7z" fill="#8CC84B"/><path d="M16 4.7l10.5 6.1v10.4L16 27.3 5.5 21.2V10.8L16 4.7z" fill="#fff"/><path d="M16 6.7l8.5 4.9v8.6L16 25.3 7.5 20.2v-8.6L16 6.7z" fill="#8CC84B"/><path d="M16 8.7l6.5 3.7v6.8L16 23.3l-6.5-3.7v-6.8L16 8.7z" fill="#fff"/><path d="M16 10.7l4.5 2.6v4.8L16 21.3l-4.5-2.6v-4.8L16 10.7z" fill="#8CC84B"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path d="M16 2.7l12.5 7.2v12.2L16 29.3 3.5 22.1V9.9L16 2.7z" fill="#8CC84B" />
+                  <path d="M16 4.7l10.5 6.1v10.4L16 27.3 5.5 21.2V10.8L16 4.7z" fill="#fff" />
+                  <path d="M16 6.7l8.5 4.9v8.6L16 25.3 7.5 20.2v-8.6L16 6.7z" fill="#8CC84B" />
+                  <path d="M16 8.7l6.5 3.7v6.8L16 23.3l-6.5-3.7v-6.8L16 8.7z" fill="#fff" />
+                  <path d="M16 10.7l4.5 2.6v4.8L16 21.3l-4.5-2.6v-4.8L16 10.7z" fill="#8CC84B" />
+                </g>
+              </svg>
               Node.js
             </span>
             <span class="badge-habilidad py">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z" fill="#3776AB"/><circle cx="10.5" cy="7.5" r="1.5" fill="#fff"/><path d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z" fill="#FFD43B"/><circle cx="21.5" cy="24.5" r="1.5" fill="#fff"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path
+                    d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z"
+                    fill="#3776AB" />
+                  <circle cx="10.5" cy="7.5" r="1.5" fill="#fff" />
+                  <path
+                    d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z"
+                    fill="#FFD43B" />
+                  <circle cx="21.5" cy="24.5" r="1.5" fill="#fff" />
+                </g>
+              </svg>
               Python
             </span>
             <span class="badge-habilidad sql">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="16" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2"/></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="16" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2" />
+              </svg>
               SQL
             </span>
             <span class="badge-habilidad mongo">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z" fill="#13AA52"/><path d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z" fill="#fff" fill-opacity=".1"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path
+                    d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z"
+                    fill="#13AA52" />
+                  <path
+                    d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z"
+                    fill="#fff" fill-opacity=".1" />
+                </g>
+              </svg>
               MongoDB
             </span>
             <span class="badge-habilidad bootstrap">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#7952B3"/><path d="M11 8.5h7.2c2.7 0 4.3 1.2 4.3 3.5 0 1.5-.8 2.6-2.2 3v.1c1.8.3 2.8 1.5 2.8 3.2 0 2.5-1.8 3.7-4.7 3.7H11V8.5zm3.1 5.6h3.2c1.2 0 1.8-.5 1.8-1.5 0-1-.6-1.5-1.8-1.5h-3.2v3zm0 5.2h3.5c1.3 0 2-.5 2-1.6 0-1.1-.7-1.6-2-1.6h-3.5v3.2z" fill="#fff"/></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" fill="#7952B3" />
+                <path
+                  d="M11 8.5h7.2c2.7 0 4.3 1.2 4.3 3.5 0 1.5-.8 2.6-2.2 3v.1c1.8.3 2.8 1.5 2.8 3.2 0 2.5-1.8 3.7-4.7 3.7H11V8.5zm3.1 5.6h3.2c1.2 0 1.8-.5 1.8-1.5 0-1-.6-1.5-1.8-1.5h-3.2v3zm0 5.2h3.5c1.3 0 2-.5 2-1.6 0-1.1-.7-1.6-2-1.6h-3.5v3.2z"
+                  fill="#fff" />
+              </svg>
               Bootstrap
             </span>
             <span class="badge-habilidad quasar">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><circle cx="16" cy="16" r="14" fill="#1976D2"/><path d="M16 7.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L16 7.5z" fill="#fff"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <circle cx="16" cy="16" r="14" fill="#1976D2" />
+                  <path d="M16 7.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L16 7.5z"
+                    fill="#fff" />
+                </g>
+              </svg>
               Quasar
             </span>
             <!-- Duplicados para efecto infinito -->
-            <span class="badge-habilidad js"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#F7DF1E"/><path d="M19.5 23.9c.6 1.1 1.4 2 2.9 2 1.2 0 2-.6 2-1.4 0-1-0.8-1.3-2.2-1.9l-.8-.3c-2.3-.9-3.8-2-3.8-4.3 0-2.1 1.6-3.7 4.1-3.7 1.8 0 3.1.6 4 2.2l-2.2 1.4c-.5-.9-1-1.2-1.8-1.2-.8 0-1.3.5-1.3 1.2 0 .8.5 1.1 1.7 1.6l.8.3c2.7 1.1 4.2 2.1 4.2 4.5 0 2.6-2 4-4.7 4-2.6 0-4.2-1.2-5-2.7l2.3-1.3zm-8.2.2c.4.7.8 1.3 1.7 1.3.9 0 1.5-.3 1.5-1.7v-7.7h2.8v7.8c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.2-2.6l2.3-1.3z" fill="#222"/></svg>JavaScript</span>
-            <span class="badge-habilidad vue"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M2 6h6.7L16 18.7 23.3 6H30L16 28 2 6z" fill="#41B883"/><path d="M2 6l14 22 14-22h-6.7L16 18.7 8.7 6H2z" fill="#41B883"/><path d="M8.7 6L16 18.7 23.3 6h-4.1L16 10.1 12.8 6H8.7z" fill="#35495E"/></g></svg>Vue.js</span>
-            <span class="badge-habilidad node"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16 2.7l12.5 7.2v12.2L16 29.3 3.5 22.1V9.9L16 2.7z" fill="#8CC84B"/><path d="M16 4.7l10.5 6.1v10.4L16 27.3 5.5 21.2V10.8L16 4.7z" fill="#fff"/><path d="M16 6.7l8.5 4.9v8.6L16 25.3 7.5 20.2v-8.6L16 6.7z" fill="#8CC84B"/><path d="M16 8.7l6.5 3.7v6.8L16 23.3l-6.5-3.7v-6.8L16 8.7z" fill="#fff"/><path d="M16 10.7l4.5 2.6v4.8L16 21.3l-4.5-2.6v-4.8L16 10.7z" fill="#8CC84B"/></g></svg>Node.js</span>
-            <span class="badge-habilidad py"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z" fill="#3776AB"/><circle cx="10.5" cy="7.5" r="1.5" fill="#fff"/><path d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z" fill="#FFD43B"/><circle cx="21.5" cy="24.5" r="1.5" fill="#fff"/></g></svg>Python</span>
-            <span class="badge-habilidad sql"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="16" rx="12" ry="5" fill="#336791"/><ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2"/></svg>SQL</span>
-            <span class="badge-habilidad mongo"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><path d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z" fill="#13AA52"/><path d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z" fill="#fff" fill-opacity=".1"/></g></svg>MongoDB</span>
-            <span class="badge-habilidad bootstrap"><svg width="24" height="24" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="6" fill="#7952B3"/><path d="M11 8.5h7.2c2.7 0 4.3 1.2 4.3 3.5 0 1.5-.8 2.6-2.2 3v.1c1.8.3 2.8 1.5 2.8 3.2 0 2.5-1.8 3.7-4.7 3.7H11V8.5zm3.1 5.6h3.2c1.2 0 1.8-.5 1.8-1.5 0-1-.6-1.5-1.8-1.5h-3.2v3zm0 5.2h3.5c1.3 0 2-.5 2-1.6 0-1.1-.7-1.6-2-1.6h-3.5v3.2z" fill="#fff"/></svg>
+            <span class="badge-habilidad js"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" fill="#F7DF1E" />
+                <path
+                  d="M19.5 23.9c.6 1.1 1.4 2 2.9 2 1.2 0 2-.6 2-1.4 0-1-0.8-1.3-2.2-1.9l-.8-.3c-2.3-.9-3.8-2-3.8-4.3 0-2.1 1.6-3.7 4.1-3.7 1.8 0 3.1.6 4 2.2l-2.2 1.4c-.5-.9-1-1.2-1.8-1.2-.8 0-1.3.5-1.3 1.2 0 .8.5 1.1 1.7 1.6l.8.3c2.7 1.1 4.2 2.1 4.2 4.5 0 2.6-2 4-4.7 4-2.6 0-4.2-1.2-5-2.7l2.3-1.3zm-8.2.2c.4.7.8 1.3 1.7 1.3.9 0 1.5-.3 1.5-1.7v-7.7h2.8v7.8c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.2-2.6l2.3-1.3z"
+                  fill="#222" />
+              </svg>JavaScript</span>
+            <span class="badge-habilidad vue"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path d="M2 6h6.7L16 18.7 23.3 6H30L16 28 2 6z" fill="#41B883" />
+                  <path d="M2 6l14 22 14-22h-6.7L16 18.7 8.7 6H2z" fill="#41B883" />
+                  <path d="M8.7 6L16 18.7 23.3 6h-4.1L16 10.1 12.8 6H8.7z" fill="#35495E" />
+                </g>
+              </svg>Vue.js</span>
+            <span class="badge-habilidad node"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path d="M16 2.7l12.5 7.2v12.2L16 29.3 3.5 22.1V9.9L16 2.7z" fill="#8CC84B" />
+                  <path d="M16 4.7l10.5 6.1v10.4L16 27.3 5.5 21.2V10.8L16 4.7z" fill="#fff" />
+                  <path d="M16 6.7l8.5 4.9v8.6L16 25.3 7.5 20.2v-8.6L16 6.7z" fill="#8CC84B" />
+                  <path d="M16 8.7l6.5 3.7v6.8L16 23.3l-6.5-3.7v-6.8L16 8.7z" fill="#fff" />
+                  <path d="M16 10.7l4.5 2.6v4.8L16 21.3l-4.5-2.6v-4.8L16 10.7z" fill="#8CC84B" />
+                </g>
+              </svg>Node.js</span>
+            <span class="badge-habilidad py"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path
+                    d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z"
+                    fill="#3776AB" />
+                  <circle cx="10.5" cy="7.5" r="1.5" fill="#fff" />
+                  <path
+                    d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z"
+                    fill="#FFD43B" />
+                  <circle cx="21.5" cy="24.5" r="1.5" fill="#fff" />
+                </g>
+              </svg>Python</span>
+            <span class="badge-habilidad sql"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="16" rx="12" ry="5" fill="#336791" />
+                <ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2" />
+              </svg>SQL</span>
+            <span class="badge-habilidad mongo"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <path
+                    d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z"
+                    fill="#13AA52" />
+                  <path
+                    d="M16.5 2.5s.2 7.2 5.2 12.2c4.7 4.7 4.3 9.7 2.7 12.2-1.7 2.6-5.2 3.1-7.9 3.1-2.7 0-6.2-.5-7.9-3.1-1.6-2.5-2-7.5 2.7-12.2C16.3 9.7 16.5 2.5 16.5 2.5z"
+                    fill="#fff" fill-opacity=".1" />
+                </g>
+              </svg>MongoDB</span>
+            <span class="badge-habilidad bootstrap"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="6" fill="#7952B3" />
+                <path
+                  d="M11 8.5h7.2c2.7 0 4.3 1.2 4.3 3.5 0 1.5-.8 2.6-2.2 3v.1c1.8.3 2.8 1.5 2.8 3.2 0 2.5-1.8 3.7-4.7 3.7H11V8.5zm3.1 5.6h3.2c1.2 0 1.8-.5 1.8-1.5 0-1-.6-1.5-1.8-1.5h-3.2v3zm0 5.2h3.5c1.3 0 2-.5 2-1.6 0-1.1-.7-1.6-2-1.6h-3.5v3.2z"
+                  fill="#fff" />
+              </svg>
               Bootstrap
             </span>
             <span class="badge-habilidad quasar">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><g><circle cx="16" cy="16" r="14" fill="#1976D2"/><path d="M16 7.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L16 7.5z" fill="#fff"/></g></svg>
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+                <g>
+                  <circle cx="16" cy="16" r="14" fill="#1976D2" />
+                  <path d="M16 7.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9L16 7.5z"
+                    fill="#fff" />
+                </g>
+              </svg>
               Quasar
             </span>
           </div>
@@ -240,7 +402,8 @@ function abrirModalImagen(src, titulo) {
         <p>&copy; 2025 Andrés David Salgado Cala. Todos los derechos reservados.</p>
         <!-- Íconos de redes sociales -->
         <div class="redes-sociales mt-3">
-          <a href="https://github.com/Andrew-css" target="_blank" rel="noopener" class="me-3 redes-icono" aria-label="GitHub">
+          <a href="https://github.com/Andrew-css" target="_blank" rel="noopener" class="me-3 redes-icono"
+            aria-label="GitHub">
             <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
                 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
@@ -248,10 +411,11 @@ function abrirModalImagen(src, titulo) {
                 -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64
                 -.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08
                 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01
-                1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                1.93-.01 2.19 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/andr%C3%A9s-david-salgado-cala-901264248/" target="_blank" rel="noopener" class="redes-icono" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/andr%C3%A9s-david-salgado-cala-901264248/" target="_blank" rel="noopener"
+            class="redes-icono" aria-label="LinkedIn">
             <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
               <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0
                 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943
@@ -260,7 +424,7 @@ function abrirModalImagen(src, titulo) {
                 1.248 1.327 1.248h.014zm4.908 8.212h2.4V9.359c0-.215.016-.43.08-.584.175
                 -.43.574-.877 1.244-.877.877 0 1.228.662 1.228 1.634v3.862h2.4V9.25c0
                 -2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.6
-                5.6 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                5.6 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
             </svg>
           </a>
         </div>
@@ -551,12 +715,14 @@ section {
   justify-content: center;
   gap: 1.5rem;
 }
+
 .redes-icono {
   color: #fff;
   transition: color 0.2s;
   display: inline-flex;
   align-items: center;
 }
+
 .redes-icono:hover {
   color: #667eea;
 }
@@ -688,7 +854,7 @@ section {
   padding: 0.7rem 1.4rem;
   font-size: 1.1rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: background 0.2s, color 0.2s, transform 0.2s;
   cursor: default;
 }
@@ -697,14 +863,45 @@ section {
   display: block;
 }
 
-.badge-habilidad.js { background: #f7df1e; color: #222; }
-.badge-habilidad.vue { background: #41b883; color: #fff; }
-.badge-habilidad.node { background: #8cc84b; color: #222; }
-.badge-habilidad.py { background: #3776ab; color: #fff; }
-.badge-habilidad.sql { background: #336791; color: #fff; }
-.badge-habilidad.mongo { background: #13aa52; color: #fff; }
-.badge-habilidad.bootstrap { background: #7952b3; color: #fff; }
-.badge-habilidad.quasar { background: #1976d2; color: #fff; }
+.badge-habilidad.js {
+  background: #f7df1e;
+  color: #222;
+}
+
+.badge-habilidad.vue {
+  background: #41b883;
+  color: #fff;
+}
+
+.badge-habilidad.node {
+  background: #8cc84b;
+  color: #222;
+}
+
+.badge-habilidad.py {
+  background: #3776ab;
+  color: #fff;
+}
+
+.badge-habilidad.sql {
+  background: #336791;
+  color: #fff;
+}
+
+.badge-habilidad.mongo {
+  background: #13aa52;
+  color: #fff;
+}
+
+.badge-habilidad.bootstrap {
+  background: #7952b3;
+  color: #fff;
+}
+
+.badge-habilidad.quasar {
+  background: #1976d2;
+  color: #fff;
+}
 
 .badge-habilidad:hover {
   transform: translateY(-3px) scale(1.04);
@@ -730,6 +927,7 @@ section {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -747,6 +945,7 @@ section {
     font-size: 0.95rem;
     padding: 0.5rem 1rem;
   }
+
   .habilidades-carousel {
     gap: 0.7rem;
   }
