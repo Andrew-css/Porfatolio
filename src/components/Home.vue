@@ -9,6 +9,7 @@ import img3 from '../assets/vivirelax.png';
 import img4 from '../assets/hotelesbarichara.png';
 import img5 from '../assets/conecta4.png';
 import img6 from '../assets/pokedex.png';
+import img7 from '../assets/proyecto-html.png';
 
 
 // Datos de proyectos
@@ -60,6 +61,14 @@ const proyectosPersonales = ref([
     tecnologias: ['Vue.js'],
     imagen: img6,
     url: 'https://pokedex-api-vue.vercel.app/'
+  },
+    {
+    id: 3,
+    titulo: 'Proyectos de HTML',
+    descripcion: 'Durante mi etapa lectiva en el SENA, desarrollé varios proyectos utilizando HTML puro, CSS y JavaScript',
+    tecnologias: ['HTML5', 'CSS3', 'JavaScript'],
+    imagen: img7,
+    url: 'https://proyectos-html-three.vercel.app/'
   },
 ])
 
@@ -194,7 +203,7 @@ function abrirModalImagen(src, titulo) {
         </p>
         <div class="proyectos-grid">
           <article class="proyecto-tarjeta" v-for="proyecto in proyectosPersonales" :key="proyecto.id">
-            <a :href="proyecto.url" target="_blank" rel="noopener" style="text-decoration: none;">
+            <a :href="proyecto.url" target="_blank" rel="noopener" style="text-decoration: none; height: 100%;" >
               <img :src="proyecto.imagen" :alt="proyecto.titulo" class="img-fluid rounded mb-3 proyecto-img"
                 style="cursor:pointer; max-height:180px; object-fit:cover;" />
               <div class="proyecto-contenido">
@@ -266,22 +275,7 @@ function abrirModalImagen(src, titulo) {
               </svg>
               Node.js
             </span>
-            <span class="badge-habilidad py">
-              <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                <g>
-                  <path
-                    d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z"
-                    fill="#3776AB" />
-                  <circle cx="10.5" cy="7.5" r="1.5" fill="#fff" />
-                  <path
-                    d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z"
-                    fill="#FFD43B" />
-                  <circle cx="21.5" cy="24.5" r="1.5" fill="#fff" />
-                </g>
-              </svg>
-              Python
-            </span>
-            <span class="badge-habilidad sql">
+<!--             <span class="badge-habilidad sql">
               <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
                 <ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791" />
                 <ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791" />
@@ -289,7 +283,7 @@ function abrirModalImagen(src, titulo) {
                 <ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2" />
               </svg>
               SQL
-            </span>
+            </span> -->
             <span class="badge-habilidad mongo">
               <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
                 <g>
@@ -345,24 +339,12 @@ function abrirModalImagen(src, titulo) {
                   <path d="M16 10.7l4.5 2.6v4.8L16 21.3l-4.5-2.6v-4.8L16 10.7z" fill="#8CC84B" />
                 </g>
               </svg>Node.js</span>
-            <span class="badge-habilidad py"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                <g>
-                  <path
-                    d="M16.1 2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7h12.3v1.4H6.9c-2.6 0-4.9 1.6-4.9 4.2v4.1c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2V8.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2z"
-                    fill="#3776AB" />
-                  <circle cx="10.5" cy="7.5" r="1.5" fill="#fff" />
-                  <path
-                    d="M15.9 30c2.2 0 4.2-.2 6-1.1 2.7-1.2 3.2-3.7 3.2-6.2v-2.7H12.8v-1.4h12.3c2.6 0 4.9-1.6 4.9-4.2v-4.1c0-2.6-2.3-4.2-4.9-4.2h-2.1v3.1c0 2.8-2.3 5.1-5.1 5.1h-7.2c-2.2 0-4.2.2-6 1.1-2.7 1.2-3.2 3.7-3.2 6.2v2.7c0 2.6 2.3 4.2 4.9 4.2h2.1v-3.1c0-2.8 2.3-5.1 5.1-5.1h7.2z"
-                    fill="#FFD43B" />
-                  <circle cx="21.5" cy="24.5" r="1.5" fill="#fff" />
-                </g>
-              </svg>Python</span>
-            <span class="badge-habilidad sql"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
+<!--             <span class="badge-habilidad sql"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
                 <ellipse cx="16" cy="8" rx="12" ry="5" fill="#336791" />
                 <ellipse cx="16" cy="24" rx="12" ry="5" fill="#336791" />
                 <ellipse cx="16" cy="16" rx="12" ry="5" fill="#336791" />
                 <ellipse cx="16" cy="16" rx="12" ry="5" fill="#fff" fill-opacity=".2" />
-              </svg>SQL</span>
+              </svg>SQL</span> -->
             <span class="badge-habilidad mongo"><svg width="24" height="24" viewBox="0 0 32 32" fill="none">
                 <g>
                   <path
@@ -583,7 +565,7 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 1rem;
 }
 
 .proyecto-tarjeta {
@@ -593,6 +575,13 @@ section {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   border: 1px solid #e2e8f0;
+  position: relative;
+}
+
+.proyecto-tarjeta a {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .proyecto-tarjeta:hover {
